@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rain-intensity>
+<downspout category="7.07">3" Plain Round</downspout>
+<downspout category="12.57">4" Plain Round</downspout>
+<downspout category="19.63">5" Plain Round</downspout>
+<downspout category="28.27">6" Plain Round</downspout>
+<downspout category="50.24">8" Plain Round</downspout>
+<downspout category="5.94">3" Corrugated Round</downspout>
+<downspout category="11.04">4" Corrugated Round</downspout>
+<downspout category="17.72">5" Corrugated Round</downspout>
+<downspout category="25.97">6" Corrugated Round</downspout>
+<downspout category="3.94">2" Plain Rectangular</downspout>
+<downspout category="6">3" Plain Rectangular</downspout>
+<downspout category="12">4" Plain Rectangular</downspout>
+<downspout category="20">5" Plain Rectangular</downspout>
+<downspout category="24">6" Plain Rectangular</downspout>
+<downspout category="3.8">2" Rectangular Corrugated</downspout>
+<downspout category="7.73">3" Rectangular Corrugated</downspout>
+<downspout category="11.7">4" Rectangular Corrugated</downspout>
+<downspout category="18.75">5" Rectangular Corrugated</downspout>
+</rain-intensity>

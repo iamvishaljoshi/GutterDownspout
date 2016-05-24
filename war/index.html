@@ -1,0 +1,1081 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gutter Downspout App</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/style-fancy.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/dd.css" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<!-- <link href="css/android.css" rel="stylesheet" type="text/css"  media="only screen and (min-width: 0px) and (max-width: 240px)"/> -->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(
+hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--[SELECT JS]-->
+<link rel="stylesheet" href="css/sparkbox-select.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.sparkbox-select.js"></script>
+<script src="js/script.js"></script>
+<script type="text/javascript" src="js/sliding.form.js"></script>
+    </head>
+    <style>
+        span.reference{
+            position:fixed;
+            left:5px;
+            top:5px;
+            font-size:10px;
+            text-shadow:1px 1px 1px #fff;
+        }
+        span.reference a{
+            color:#555;
+            text-decoration:none;
+			text-transform:uppercase;
+        }
+        span.reference a:hover{
+            color:#000;
+            
+        }
+        h1{
+            color:#ccc;
+            font-size:36px;
+            text-shadow:1px 1px 1px #fff;
+            padding:20px;
+        }
+    </style>
+
+<script type="text/javascript">
+var count = 0;
+
+ var doc = new jsPDF();
+var options = {
+	    pagesplit: true
+	};
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+function generatePDF(){
+	var tableOne = tableToJson($('#table-id-one').get(0));
+	var tableTwo = tableToJson($('#table-id-two').get(0)),
+	cellWidth = 120,
+	cellWidth2 = 80,
+    rowCount = 0,
+    cellContents,
+    leftMargin = 100,
+    topMargin2 = 250,
+    topMarginTable2 = 250,
+    headerRowHeight = 13,
+    rowHeight = 9,
+    l = {
+            orientation: 'l',
+            unit: 'mm',
+            format: 'a3',
+            compress: true,
+            fontSize: 8,
+            lineHeight: 1,
+            autoSize: false,
+            printHeaders: true
+	};
+	var table = tableToJson($('#table-id').get(0)),
+	cellWidth = 120,
+	cellWidth2 = 80,
+    rowCount = 0,
+    cellContents,
+    leftMargin = 100,
+    topMargin = 55,
+    topMarginTable = 55,
+    headerRowHeight = 13,
+    rowHeight = 9,
+    l = {
+            orientation: 'l',
+            unit: 'mm',
+            format: 'a3',
+            compress: true,
+            fontSize: 8,
+            lineHeight: 1,
+            autoSize: false,
+            printHeaders: true
+	};
+	
+	
+	var doc = null;
+	 doc = new jsPDF(l,'in', 'letter');
+	var img = document.getElementById("logoId");
+	
+	 doc.addImage(img, 'JPEG', 300, 0, 40, 60);
+	doc.setFontSize(18);
+	doc.text(180,35,'Sizing Summary');
+	doc.setFontSize(10);
+	var val;
+	$.each(table, function(i, row){
+		$.each(row, function(j,cell){
+			if(cell==='{{totalDesignArea}}'){
+				val = $("#totalDesignArea").val()
+				doc.cell(leftMargin,topMargin,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==='{{noOfDownspoutForDoc}}'){
+				val = $("#noOfDownspout").val()
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==="{{minAreaOFEachDownspoutForDoc}}"){
+				val = $("#minimumAreaOfEachDownSpout").val();
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==="{{minDiameterOfDownspoutForDoc}}"){
+				val = $("#minDiameterOfDownspout").val();
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==="{{typeOfDownspout}}"){
+				val = $("#typeOfDownspout").val();
+				if(typeof(val) =='undefined'||val===""){
+					val = '-';
+				}
+				doc.cell(leftMargin,topMargin,cellWidth2,headerRowHeight,val,i);
+			}else{
+				doc.cell(leftMargin,topMargin,cellWidth,headerRowHeight,cell,i);
+			}
+		});
+	});
+	
+	
+	$.each(tableOne, function(i, row){
+		$.each(row, function(j,cell){
+			doc.cell(leftMargin,topMargin,cellWidth,headerRowHeight,cell,i);
+		});
+	});
+	$.each(tableTwo, function(i, row){
+		$.each(row, function(j,cell){
+			if(cell==='{{noOfGuttersForDoc}}'){
+				val = $("#noOfGutters").val()
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin2,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==='{{maxGutterSectionForDoc}}'){
+				val = $("#maxGutterSection").val()
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin2,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==="{{minimumGutterWidthForDoc}}"){
+				val = $("#minimumGutterWidth").val();
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin2,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==="{{minimumGutterDepthForDoc}}"){
+				val = $("#minimumGutterDepth").val();
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin2,cellWidth2,headerRowHeight,val,i);
+			}else if(cell==="{{minimumGutterWidthHalfRoundForDoc}}"){
+				val = $("#minimumGutterWidthHalfRound").val();
+				if(typeof(val) =='undefined'||val===""){
+					val = '0.0';
+				}
+				doc.cell(leftMargin,topMargin2,cellWidth2,headerRowHeight,val,i);
+			}else{
+				doc.cell(leftMargin,topMargin2,cellWidth,headerRowHeight,cell,i);
+			}
+		});
+	});
+	doc.text(leftMargin,220,"Note:");
+	doc.text(leftMargin,225,'Rectangular Gutters: "Style of Gutters to be used: Not all gutters are effective for their full depth and width, see Figures 1-1 and');
+	doc.text(leftMargin,230,' 1-4 for design data in SMACNA’s Architectural Sheet Metal Manual"');
+
+	doc.save('Smacna_Gutter_Downspout_app.pdf');
+	}
+
+ function tableToJson(table) {
+    var data = [];
+
+    // first row needs to be headers
+    var headers = [];
+    for (var i=0; i<table.rows[0].cells.length; i++) {
+        headers[i] = table.rows[0].cells[i].innerHTML;
+    }
+    data.push(headers);
+    // go through cells
+    for (var i=1; i<table.rows.length; i++) {
+
+        var tableRow = table.rows[i];
+        var rowData = {};
+
+        for (var j=0; j<tableRow.cells.length; j++) {
+
+            rowData[ headers[j] ] = tableRow.cells[j].innerHTML;
+
+        }
+
+        data.push(rowData);
+    }       
+
+    return data;
+}
+
+
+/* function generatePDF1() {
+		var doc = new jsPDF();
+     doc.fromHTML($('#table1').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    }); 
+    
+  /*   doc.addHTML($('#content'), 0, 0, options, function(){
+        pdf.save("test.pdf");
+    }); 
+    	doc.save('Smacna_Gutter_Downspout_app.pdf');
+    
+}; */
+    
+    $().ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "/rest/getState/getStateList",
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(state) {
+                $("#stateList").get(0).options.length = 0;
+                $("#stateList").get(0).options[0] = new Option("Select the state", "-1");   
+     
+                $.each(state, function(index, item) {
+                    $("#stateList").get(0).options[$("#stateList").get(0).options.length] = new Option(item, item);
+                });
+            },
+            error: function() {
+                alert("Failed to load state");
+            }
+        });
+    });   
+   
+   
+    function getCity(state) {
+    	$.ajax({
+    	type: "GET",
+    	url: "/rest/getCity/getCityList",
+    	data:'stateName='+state,
+    	contentType: "application/json; charset=utf-8",
+        dataType: "json",
+    	success: function(city){
+    		 $("#cityList").get(0).options.length = 0;
+             $("#cityList").get(0).options[0] = new Option("Select the city", "-1");   
+  
+             $.each(city, function(index, item) {
+                 $("#cityList").get(0).options[$("#cityList").get(0).options.length] = new Option(item, item);
+             });
+    	}, error: function() {
+            alert("Failed to load city");
+        }
+    	});
+    }
+    
+    function getStormYear(){
+    	$("#stormYearList").val($("#stormYearList").get(0).options[0]);
+    	$("#rainIntensity").val("");
+    }
+    
+    function getIntensity(stormYear) {
+    	$.ajax({
+    	type: "GET",
+    	url: "/rest/rainIntensity/rainIntensityValue?",
+    	data:'cityName='+$("#stateList option:selected" ).text()+"-"+$("#cityList option:selected" ).text()+'&'+'stormYear='+stormYear,
+    	contentType: "application/json; charset=utf-8",
+        dataType: "json",
+    	success: function(rainIntensity){
+                 $("#rainIntensity").val(rainIntensity[0]);
+    	}, error: function() {
+            alert("Failed to load rainIntensity");
+        }
+    	});
+    }
+    
+    function addrow(shape) {
+    	
+    	$("#noOfDownspout").val('');
+		$("#minimumAreaOfEachDownSpout").val('');
+		$("#minDiameterOfDownspout").val('');
+		$("#maxGutterSection").val('');
+		$("#minWidhtToDepthRatio").val('');
+		$("#noOfGutters").val('');
+		$("#minimumGutterWidth").val('');
+		$("#minimumGutterDepth").val('');
+		$("#minimumGutterWidthHalfRound").val('');
+		$("#downspoutList").get(0).options.length = 0;
+        $("#downspoutList").get(0).options[0] = new Option("Choose a type of downspout", "-1");  
+        
+    	var hit = false;
+    	    	if(shape==='Rectangular'){
+    		var height = $("#rectangularHeight").val();
+    		var width = $("#rectangularWidth").val();
+    		var pitch = $("#rectangularPitch").val();
+    		var data = {"height":height,"width":width,"pitch":pitch};
+    		var url= "/rest/calculationForShapes/calculationforRectangularShape";
+    		if(height===""||width===""||pitch==="")
+    		{
+    			hit = false;
+    		}else{
+    			hit = true;
+    		}
+    		count = count+1;
+    	}else if(shape==='Triangle'){
+    		var heightInFt = $("#triangleHeight").val();
+    		var baseInft = $("#TriangleBase").val();
+    		var pitch = $("#TrianglePitch").val();
+    		var data = {"heightInFt":heightInFt,"baseInft":baseInft,"pitch":pitch};
+    		var url= "/rest/calculationForShapes/calculationforTriangleShape";
+    		if(heightInFt===""||baseInft===""||pitch==="")
+    		{
+    			hit = false;
+    		}else{
+    			hit = true;
+    		}
+    		count = count+1;
+    	}else if(shape==='Trapezoid'){
+    		var heightInFt = $("#TrapezoidHeight").val();
+    		var topEdgeInFt = $("#TrapezoidTopEdge").val();
+    		var pitch = $("#TrapezoidPitch").val();
+    		var bottomEdgeInFt = $("#TrapezoidBottomEdge").val();
+    		var data = {"heightInFt":heightInFt,"topEdgeInFt":topEdgeInFt,"pitch":pitch,"bottomEdgeInFt":bottomEdgeInFt};
+    		var url= "/rest/calculationForShapes/calculationforTrapezoidShape";
+    		if(heightInFt===""||topEdgeInFt===""||pitch===""||bottomEdgeInFt==="")
+    		{
+    			hit = false;
+    		}else{
+    			hit = true;
+    		}
+    		count = count+1;
+    	}else if(shape==='Sector'){
+    		var angle = $("#SectorAngle").val();
+    		var radius = $("#SectorRadius").val();
+    		var pitch = $("#SectorPitch").val();
+    		var data = {"angle":angle,"radius":radius,"pitch":pitch};
+    		var url= "/rest/calculationForShapes/calculationforSectorShape";
+    		if(angle===""||radius===""||pitch==="")
+    		{
+    			hit = false;
+    		}else{
+    			hit = true;
+    		}
+    		count = count+1;
+    	}else if(shape==='Circle'){
+    		var radious = $("#circleRadius").val();
+    		var pitch = $("#circlePitch").val();
+    		var data = {"radious":radious,"pitch":pitch};
+    		var url = "/rest/calculationForShapes/calculationforCircleShape";
+    		if(radious===""||pitch==="")
+    		{
+    			hit = false;
+    		}else{
+    			hit = true;
+    		}
+    		count = count+1;
+    	}else if(shape==='Wall'){
+    		var length = $("#wallLength").val();
+    		var height = $("#wallHeight").val();
+    		var data = {"length":length,"height":height};
+    		var url = "/rest/calculationForWalls/calculationForWall";
+    		if(length===""||height==="")
+    		{
+    			hit = false;
+    		}else{
+    			hit = true;
+    		}
+    		count = count++;
+    	}
+    	
+    	if(hit){
+	    	$.ajax({
+	        	type: "POST",
+	        	url: url,
+	        	data: JSON.stringify(data),
+	        	contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	        	success: function(response){
+	        		if(shape==="Wall"){
+	        			$("#firstRowWall").after('<tr id="walcalculation'+count+'"><td align="right"><input name="walcalculation[]" type="text" class="txtbox" value="'+shape+'" readonly="true"/></td><td align="right"><input type="text" id="wallCalculation'+count+'" name="walcalculation[]" id="walcalculation" class="txtbox" readonly="true" value="'+parseFloat(response.calculation).toFixed(2)+'" /></td><td>&nbsp;<a href="javascript:removWall('+count+');" class="remCF"><font color="#3367B4">Remove</font></a></td></tr>');
+	        			//$("#totalRoofAreaWall").val(parseFloat($("#totalRoofAreaWall").val()+);
+	        			$("#totalWallArea").val(parseFloat($("#totalWallArea").val())+parseFloat(response.totalWallArea));
+	        			
+	        		}else{
+	        		$("#firstRowShape").after('<tr id="calculation'+count+'" name="calculation[]"><td align="right"><input type="text" class="txtbox" value="'+shape+'" readonly="true"/></td><td align="right"><input type="text"  id="shapeCalculation'+count+'" class="txtbox" readonly="true" value="'+parseFloat(response.calculation).toFixed(2)+'" /></td><td>&nbsp;<a href="javascript:removShape('+count+');" class="remCF"><font color="#3367B4">Remove</font></a></td></tr>');
+	        		var total  = parseFloat($("#totalRoofArea").val())+parseFloat(response.calculation);
+	        		 $("#totalRoofArea").val(total.toFixed(2));
+	        		$("#totalRoofAreaWall").val($("#totalRoofArea").val());
+	        		}
+	        		$("#totalDesignArea").val(parseFloat($("#totalWallArea").val())+parseFloat($("#totalRoofAreaWall").val()));
+	        		$("#totalDesignAreaForDoc").val($("#totalDesignArea").val());
+	        		
+	        		$('#totalDesignAreaForDoc').text(function(i, oldText) {
+	        	        return $("#totalDesignArea").val();
+	        	    });
+	        		
+	        	}, error: function() {
+	                alert("Please enter the required information to get proper result.");
+	            }
+	        	});
+	    	
+    	}else{
+    		alert("Please enter the required information to get proper result.");
+    	}	
+    	
+	    
+    }
+    
+    $("#customFields").bind('click','.remCF',function(){
+    	alert('sddff');
+        $(this).parent().parent().remove();
+    });
+    
+	function removShape(obj) {
+		var calToDelete = $("#shapeCalculation"+obj+"").val();
+		var totalRoofAre = $("#totalRoofArea").val();
+		var totalDesignArea = $("#totalDesignArea").val();
+		$("#totalRoofArea").val(totalRoofAre - calToDelete);
+		$("#totalRoofAreaWall").val(totalRoofAre - calToDelete);
+		$("#totalDesignArea").val(totalDesignArea - calToDelete);
+		
+		$("#calculation"+obj+"").remove();
+		$("#noOfDownspout").val('');
+		$("#minimumAreaOfEachDownSpout").val('');
+		$("#minDiameterOfDownspout").val('');
+		$("#maxGutterSection").val('');
+		$("#minWidhtToDepthRatio").val('');
+		$("#noOfGutters").val('');
+		$("#minimumGutterWidth").val('');
+		$("#minimumGutterDepth").val('');
+		$("#minimumGutterWidthHalfRound").val('');
+		$("#downspoutList").get(0).options.length = 0;
+        $("#downspoutList").get(0).options[0] = new Option("Choose a type of downspout", "-1");  
+		//$(obj).parent().remove();
+	}
+	
+	function removWall(obj) {
+		var calTodelete = $("#wallCalculation"+obj).val();
+		var totalDesignArea = $("#totalDesignArea").val();
+		var totalWallArea = $("#totalWallArea").val();
+		
+		var afterDelete = totalDesignArea-(calTodelete*0.5);
+		$("#totalDesignArea").val(afterDelete);
+		$("#totalWallArea").val(totalWallArea-(calTodelete*0.5));
+		
+		$("#walcalculation"+obj+"").remove();
+		
+		$("#noOfDownspout").val('');
+		$("#minimumAreaOfEachDownSpout").val('');
+		$("#minDiameterOfDownspout").val('');
+		$("#maxGutterSection").val('');
+		$("#minWidhtToDepthRatio").val('');
+		$("#noOfGutters").val('');
+		$("#minimumGutterWidth").val('');
+		$("#minimumGutterDepth").val('');
+		$("#minimumGutterWidthHalfRound").val('');
+		$("#downspoutList").get(0).options.length = 0;
+        $("#downspoutList").get(0).options[0] = new Option("Choose a type of downspout", "-1");  
+	}
+	
+	function getDownspoutCalculation(noOfDownspout){
+		
+		var rainIntensity =  $("#rainIntensity").val();
+		var totalDesignArea = $("#totalDesignArea").val();
+		$('#noOfDownspoutForDoc').text(function(i, oldText) {
+	        return noOfDownspout;
+	    });
+		var data = {"noOfDownspout":noOfDownspout,"rainIntensity":rainIntensity,"totalDesignArea":totalDesignArea};
+		
+		$.ajax({
+	    	type: "POST",
+	    	url: "/rest/calculationForDownspouts/calculationForDownspout",
+	    	data:JSON.stringify(data),
+	    	contentType: "application/json; charset=utf-8",
+	    	async: true,
+	        dataType: "json",
+	    	success: function(response){
+	                 $("#drainageFactor").val(response.drainageFactor.toFixed(2));
+	                 $("#minimumAreaOfEachDownSpout").val(response.minimumAreaOfEachDownSpout.toFixed(2));
+	                 $('#minAreaOFEachDownspoutForDoc').text(function(i, oldText) {
+	         	        return response.minimumAreaOfEachDownSpout;
+	         	    });
+	                 
+	                 $("#minDiameterOfDownspout").val(response.minDiameterOfDownspout);
+	                 $('#minDiameterOfDownspoutForDoc').text(function(i, oldText) {
+		         	        return response.minDiameterOfDownspout;
+		         	    });
+	    	}, error: function() {
+	            alert("Failed to load downspout calculation");
+	        }
+	    	});
+		
+		var minimumAreaOfEachDownSpout = $("#minimumAreaOfEachDownSpout").val();
+		var udata = {"minimumAreaOfEachDownSpout":minimumAreaOfEachDownSpout};
+		$.ajax({
+	    	type: "POST",
+	    	url: "/rest/getDownspout/getDownspoutList",
+	    	data: JSON.stringify(udata),
+	    	contentType: "application/json; charset=utf-8",
+	        dataType: "json",
+	    	success: function(response){
+	                 $("#downspoutList").get(0).options.length = 0;
+	                 $("#downspoutList").get(0).options[0] = new Option("Choose a type of downspout", "-1");   
+	      
+	                 $.each(response, function(index, item) {
+	                     $("#downspoutList").get(0).options[$("#downspoutList").get(0).options.length] = new Option(item, item);
+	                 });
+	    	}, error: function() {
+	            alert("Failed to load downspoutList");
+	        }
+	    	});
+		
+		
+	}
+	
+	function setTypeOfDownspout(downspount){
+		 $('#typeOfDownspout').text(function(i, oldText) {
+  	        return downspount;
+  	    });
+		 
+		 $('#typeOfDownspout').val(downspount);
+	}
+	
+	function getGutterCalculation(noOfGutters){
+		 $('#noOfGuttersForDoc').text(function(i, oldText) {
+	  	        return noOfGutters;
+	  	    });
+		var totalDesignArea =  $("#totalDesignArea").val();
+		var rainIntensity =  $("#rainIntensity").val();
+		var minWidhtToDepthRatio = $("#minWidhtToDepthRatio").val();
+		var maxGutterSection = $("#maxGutterSection").val();
+		
+		if(maxGutterSection>50){
+			
+			alert("Max length of gutter: 50 ft.");
+			return false;
+		}
+		
+		
+		$('#maxGutterSectionForDoc').text(function(i, oldText) {
+  	        return maxGutterSection;
+  	    });
+		var data = {"noOfGutters":noOfGutters,"totalDesignArea":totalDesignArea,"rainIntensity":rainIntensity,"minWidhtToDepthRatio":minWidhtToDepthRatio,"maxGutterSection":maxGutterSection};
+		
+		$.ajax({
+	    	type: "POST",
+	    	url: "/rest/calculationForGutters/calculationForGutter",
+	    	data:JSON.stringify(data),
+	    	contentType: "application/json; charset=utf-8",
+	        dataType: "json",
+	    	success: function(response){
+	                 $("#minimumGutterWidth").val(response.minimumGutterWidth);
+	                 $('#minimumGutterWidthForDoc').text(function(i, oldText) {
+	           	        return response.minimumGutterWidth;
+	           	    });
+	                 $("#minimumGutterDepth").val(response.minimumGutterDepth);
+	                 $('#minimumGutterDepthForDoc').text(function(i, oldText) {
+		           	        return response.minimumGutterDepth;
+		           	    });
+	                 $("#rainIntensityAreaServed").val(response.rainIntensityAreaServed.toFixed(2));
+	                 $("#minimumGutterWidthHalfRound").val(response.minimumGutterWidthHalfRound);
+	                 $('#minimumGutterWidthHalfRoundForDoc').text(function(i, oldText) {
+		           	        return response.minimumGutterWidthHalfRound;
+		           	    });
+	    	}, error: function() {
+	            alert("Failed to load Gutter calculation");
+	        }
+	    	});
+		
+		var minimumAreaOfEachDownSpout = $("#minimumAreaOfEachDownSpout").val();
+		var udata = {"minimumAreaOfEachDownSpout":minimumAreaOfEachDownSpout};
+		$.ajax({
+	    	type: "POST",
+	    	url: "/rest/getDownspout/getDownspoutList",
+	    	data: JSON.stringify(udata),
+	    	contentType: "application/json; charset=utf-8",
+	        dataType: "json",
+	    	success: function(response){
+	                 $("#downspoutList").get(0).options.length = 0;
+	                 $("#downspoutList").get(0).options[0] = new Option("Choose a type of downspout", "-1");   
+	      
+	                 $.each(response, function(index, item) {
+	                     $("#downspoutList").get(0).options[$("#downspoutList").get(0).options.length] = new Option(item, item);
+	                 });
+	    	}, error: function() {
+	            alert("Failed to load downspoutList");
+	        }
+	    	});
+		
+		
+	}
+	
+	function checkMaxGutterSection(maxGutterSection){
+		debugger;
+		if(parseFloat(maxGutterSection.trim())>50){
+			$("#maxGutterSection").val('');
+			$("#maxGutterSection").focus();
+			$('#checkMaxGutterError').show();
+			return false;
+		}else if(parseFloat(maxGutterSection.trim())<=0){
+			$("#maxGutterSection").val('');
+			$("#maxGutterSection").focus();
+			$('#checkMaxGutterError').show();
+			return false;
+
+		}else if(maxGutterSection==="".trim()){
+			$("#maxGutterSection").val('');
+			$("#maxGutterSection").focus();
+			$('#checkMaxGutterError').show();
+			return false;
+
+		}else{
+			$('#checkMaxGutterError').hide();
+		}
+		
+	}
+	
+	function checkMinWidhtToDepthRatio(minWidhtToDepthRatio){
+		if(parseFloat(minWidhtToDepthRatio.trim())>0.75){
+			$("#minWidhtToDepthRatio").val('');
+			$("#minWidhtToDepthRatio").focus();
+			$('#checkMinWidhtToDepthError').show();
+			return false;
+
+		}else if(parseFloat(minWidhtToDepthRatio.trim())<=0){
+			$("#minWidhtToDepthRatio").val('');
+			$("#minWidhtToDepthRatio").focus();
+			$('#checkMinWidhtToDepthError').show();
+			return false;
+		}else{
+			$('#checkMinWidhtToDepthError').hide();
+		}
+		
+	}
+    
+    
+   
+    </script>
+</head>
+
+<body>
+	<!-- Header Start -->
+	<div id="header">
+		<!-- Logo Start -->
+		<div id="logo">
+			<h1>
+				<a href="index.html"> <img src="images/logo.png" alt="HOME" />
+				</a>
+			</h1>
+		</div>
+		<!-- Logo End -->
+		<!-- Navigation Start -->
+		<div id="nav">
+			<ul>
+				<li><a class="first current" href="https://www.smacna.org" target="_blank">Home</a></li>
+				<li><a href="https://www.smacna.org/about-us" target="_blank">About Us</a></li>
+				<li class="last"><a href="https://www.smacna.org/contact" target="_blank" class="last">Contact Us</a></li>
+			</ul>
+		</div>
+		<!-- Navigation End -->
+		<div class="clr"></div>
+	</div>
+	<!-- Header End -->
+	<!-- Content Body Start -->
+	<div id="content-body">
+		<div class="content-container">
+			<h2>Project Information</h2>
+			
+			<form method="post" action="/sectionsList.html" commandName="contact"
+				onsubmit="validate()">
+				<div class="select selectMedium">
+				 <select onChange="getCity(this.value);" tabindex="1" id="stateList">
+					<option value="0" label="Select the state" selected>Select the state</option>
+				</select>
+				</div>
+				<div class="select selectMedium">
+				<select tabindex="2" id="cityList" onChange="getStormYear();">
+					<option value="0" label="Select the city" selected>Select the city</option>
+				</select>
+				</div>
+				<div class="select selectMedium">
+				<select  onchange="getIntensity(this.value);" tabindex="3" id="stormYearList">
+					<option value="0" label="Storm Year" selected>Storm Year</option>
+					<option value="10">10 years</option>
+					<option value="100">100 years</option>
+				</select>
+				</div>
+				<input type="text" id="rainIntensity" name="rainIntensity" tabindex="4" placeholder="Rain Intensity (in/hr)"/>
+				<!-- Next Button Start -->
+				</br>
+				<!-- <div class="next-btn">
+					<a href="#" class="next"
+						onclick="validate()" >Next</a>
+				</div> -->
+				
+        
+    <!--   <div class="next-btn">
+      <input type="submit" name="Next" id="submit" value="Next" class="next"></input>
+					
+				</div> -->
+				<!-- <h2>Sections List</h2> -->
+     </form>
+     
+       
+          			<div>     
+        
+     
+       
+       
+            <div id="wrapper">
+          
+            
+                <div id="steps">
+                    <form id="formElem" name="formElem" action="" method="post">
+                        <fieldset class="step">
+                            <legend>Rectangular</legend>
+                            <p>
+                                <label for="height">Height (ft.)<font color="red">*</font></label>
+                                <input id="rectangularHeight" name="rectangularHeight" />
+                            </p>
+                            <p>
+                                <label for="width">Width (ft.)<font color="red">*</font></label>
+                                <input id="rectangularWidth" name="rectangularWidth" />
+                            </p>
+                           <p>
+                                <label for="pitch">Pitch (in. per ft.)<font color="red">*</font></label>
+                                <input id="rectangularPitch" name="rectangularPitch" />
+                            </p>
+                            
+                            <img src="images/rectangle.png" style="padding-left:40px;padding-top:30px;width: 250px;"></img>
+                            
+                            
+							<p class="submit">
+                                <button id="calRect" type="button" onclick="addrow('Rectangular');">Calculate</button>
+                             </p>
+                        </fieldset>
+                        <fieldset class="step">
+                            <legend>Triangle</legend>
+                            <p>
+                                <label for="height">Height<font color="red">*</font></label>
+                                <input id="triangleHeight" name="TriangleHeight" />
+                            </p>
+                            <p>
+                                <label for="base">Base<font color="red">*</font></label>
+                                <input id="TriangleBase" name="TriangleBase" />
+                            </p>
+                           <p>
+                                <label for="pitch">Pitch<font color="red">*</font></label>
+                                <input id="TrianglePitch" name="TrianglePitch" />
+                            </p>
+                            <img src="images/triangle.png" style="padding-left:50px;padding-top:20px;width:200px"></img>
+                            <p class="submit">
+                                <button id="calTrai" type="button" onclick="addrow('Triangle');">Calculate</button>
+                             </p>
+                        </fieldset>
+                        <fieldset class="step">
+                            <legend>Trapezoid</legend>
+                            <p>
+                                <label for="topEdge">Top Edge (ft.)<font color="red">*</font></label>
+                                <input id="TrapezoidTopEdge" name="TrapezoidTopEdge" />
+                            </p>
+                            <p>
+                                <label for="bottomEdge">Bottom Edge (ft.)<font color="red">*</font></label>
+                                <input id="TrapezoidBottomEdge" name="TrapezoidBottomEdge" />
+                            </p>
+                           <p>
+                                <label for="height">Height (ft.)<font color="red">*</font></label>
+                                <input id="TrapezoidHeight" name="TrapezoidHeight" />
+                            </p>
+                            <p>
+                                <label for="pitch">Pitch<font color="red">*</font></label>
+                                <input id="TrapezoidPitch" name="TrapezoidPitch" />
+                            </p>
+                            <img src="images/trapezoid.jpg" style="padding-left:50px;padding-top:50px"></img>
+                            <p class="submit">
+                                <button id="calTrape" type="button" onclick="addrow('Trapezoid');">Calculate</button>
+                            </p>
+                        </fieldset>
+                        <fieldset class="step">
+                            <legend>Sector</legend>
+                            <p>
+                                <label for="angle">Angle<font color="red">*</font></label>
+                                <input id="SectorAngle" name="SectorAngle" />
+                            </p>
+                            <p>
+                                <label for="radius">Radius (ft.)<font color="red">*</font></label>
+                                <input id="SectorRadius" name="SectorRadius" />
+                            </p>
+							<p>
+                                <label for="pitch">Pitch<font color="red">*</font></label>
+                                <input id="SectorPitch" name="SectorPitch" />
+                            </p>
+                             <img src="images/Sector.png" style="padding-left:50px;padding-top:20px"></img>
+                            
+                            <p class="submit">
+                                <button id="calSect" type="button" onclick="addrow('Sector');">Calculate</button>
+                             </p>
+                        </fieldset>
+						<fieldset class="step">
+                            <legend>Circle</legend>
+							<p>
+                                <label for="radius">Radius  (ft)<font color="red">*</font></label>
+                                <input id="circleRadius" name="circleRadius" />
+                            </p>
+							<p>
+                                <label for="pitch">Pitch<font color="red">*</font></label>
+                                <input id="circlePitch" name="circlePitch" />
+                            </p>
+                            <img src="images/circle.png" style="padding-left:50px;padding-top:2px;width:140px"></img>
+                            
+                           <p class="submit">
+                                <button id="calCir" type="button" onclick="addrow('Circle');">Calculate</button>
+                             </p>
+                        </fieldset>
+                        <fieldset class="step">
+                            <legend>Wall</legend>
+							<p>
+                                <label for="length">Length<font color="red">*</font></label>
+                                <input id="wallLength" name="wallLength" />
+                            </p>
+							<p>
+                                <label for="height">Height<font color="red">*</font></label>
+                                <input id="wallHeight" name="wallHeight" />
+                            </p>
+                            <img src="images/rectangle.png" style="padding-left:40px;padding-top:10px;width: 250px;"></img>
+                           <p class="submit">
+                                <button id="calWall" type="button" onclick="addrow('Wall');">Calculate</button>
+                             </p>
+                        </fieldset>
+                    </form>
+                </div>
+                <div id="navigation" style="display:none;">
+                    <ul>
+                        <li class="selected">
+                            <a href="#">Rectangular</a>
+                        </li>
+                        <li>
+                            <a href="#">Triangle</a>
+                        </li>
+                        <li>
+                            <a href="#">Trapezoid</a>
+                        </li>
+                        <li>
+                            <a href="#">Sector</a>
+                        </li>
+						<li>
+                            <a href="#">Circle</a>
+                        </li>
+                        <li>
+                            <a href="#">Wall</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            </div>
+            </br>
+		
+		
+<h2>Sections List</h2>
+		
+		<table border="1" cellpadding="1" cellspacing="1" class="shape">
+		<tr id="firstRowShape"><th><input type="button" title="Type of Area"
+		value="Type of Area" class="btn"
+		/></th><th>
+		<input type="button" title="Design Area (ft2)"
+		value="Design Area (ft2)" class="btn"/></th></tr>
+		<tr>
+    <td align="center"><font color="#3367B4">Total Roof Area</font></td><td align="right"><input type="text" id="totalRoofArea" align="right" readonly="true" value="0.0"/></td>
+  </tr>
+		</table>
+		
+		<h2>Considering Walls using IPC 1106.4 Vertical Walls</h2>
+			
+			<table border="1" cellpadding="1" cellspacing="1" class="wall">
+		<tr id="firstRowWall"><th><input type="button" title="Type of Area"
+		value="Type of Area" class="btn"
+		/></th><th><input type="button" title="Design Area (ft2)"
+		value="Design Area (ft2)" class="btn"
+		/></th></tr>
+		<tr>
+    <td align="center"><font color="#3367B4">Total Wall Area</font></td><td align="right"><input type="text" id="totalWallArea" align="right" readonly="true" value="0.0"/></td>
+    </tr>
+    <tr><td align="center"><font color="#3367B4">Total Roof Area</font></td><td align="right"><input type="text" id="totalRoofAreaWall" align="right" readonly="true" value="0.0"/></td>
+  </tr>
+  <tr><td align="center"><font color="#3367B4">Total Area</font></td><td align="right"><input type="text" id="totalDesignArea" align="right" readonly="true" value="0.0"/></td></tr>
+		</table>
+		
+		<h2>Sizing Section</h2>
+		<h2>Results for Downspout</h2>
+		
+		<table border="1" class="wall" cellpadding="1" cellspacing="1">
+		<tr id="firstRowDownSpout">
+			<td align="left"><font color="#3367B4">No. of Downspout</font></td>
+			<td><input type="text" id="noOfDownspout" name="noOfDownspout" onblur="getDownspoutCalculation(this.value);"/></td>
+		</tr>
+			
+		<tr>
+			<td align="left"><font color="#3367B4">Min. Area of Each Downspout (in<sup>2</sup>)</font></td>
+			<td><input type="text" id="minimumAreaOfEachDownSpout" name="minimumAreaOfEachDownSpout" readonly="readonly"/></td>
+			<!-- <td rowspan="4"><img src="images/rounddownspout.png" style="padding-right250px;width: 250px"></img></td> -->
+			
+		</tr>
+		<tr>
+			<td align="left"><font color="#3367B4">Min. Diameter of Downspout</font></td>
+			<td><input type="text" id="minDiameterOfDownspout" name="minDiameterOfDownspout" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			
+		</tr>
+		</table>
+		
+		<input type="hidden" id="drainageFactor" name="drainageFactor" readonly="readonly"/>
+		
+		<h2>Gutter Parameters</h2>
+		<table border="1" cellpadding="1" cellspacing="1" class="wall">
+		<tr id="firstRowGutterParameters">
+		<td align="left"><font color="#3367B4">Max. gutter section (ft.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+		<td><input type="text" id="maxGutterSection" name="maxGutterSection" onblur="checkMaxGutterSection(this.value);"/></td><td>&nbsp;<span id="checkMaxGutterError" style="display: none"><font color="red">Length of gutter must be between 0 to 50 ft.</font></span></td> 
+		</tr>
+		<tr>
+		<td align="left"><font color="#3367B4">M (width to depth ratio)</font></td>
+		<td><input type="text" id="minWidhtToDepthRatio" name="minWidhtToDepthRatio" onblur="checkMinWidhtToDepthRatio(this.value);"/></td><td>&nbsp;<span id="checkMinWidhtToDepthError" style="display: none"><font color="red">Ratio of depth to width of gutter must be between 0 to 0.75</font></span></td></tr>
+		</table>
+		
+		<h2>Results for Gutter</h2>
+		
+		<table border="1" cellpadding="1" cellspacing="1" class="wall">
+		<tr id="firstRowGutterResults">
+		<td align="left"><font color="#3367B4">No. of Gutters</font></td>
+		<td width="50%"><input type="text" id="noOfGutters" name="noOfGutters" onblur="getGutterCalculation(this.value)"/></td>
+		</tr>
+		<tr>
+		<td align="left"><font color="#3367B4">Min. Gutter Width (in)</font></td>
+		<td><input type="text" id="minimumGutterWidth" name="minimumGutterWidth" readonly="readonly"/></td></tr>
+		<tr>
+		<td align="left"><font color="#3367B4">Min. Gutter Depth (in)</font></td>
+		<td><input type="text" id="minimumGutterDepth" name="minimumGutterDepth" readonly="readonly"/></td></tr>
+		<tr>
+		<td align="left"></td>
+		<td><input type="hidden" id="rainIntensityAreaServed" name="rainIntensityAreaServed"/></td></tr>
+		<tr>
+		<td align="left"><font color="#3367B4">Min. Gutter Width (Half Round) (in)&nbsp;</font></td>
+		<td><input type="text" id="minimumGutterWidthHalfRound"  name="minimumGutterWidthHalfRound" readonly="readonly"/></td></tr>
+		</table>
+		
+		<div class="select selectMedium">
+				<select tabindex="-1" id="downspoutList" onchange="setTypeOfDownspout(this.value);">
+					<option value="0" label="Choose a type of downspout" selected>Choose a type of downspout</option>
+				</select>
+		</div>
+		
+		<input type="hidden" id="typeOfDownspout"/>
+		
+		<div  style="display: none">
+		    
+		    
+		    <div>
+		   <b>Note:</b>
+<p>
+		    
+		    </p></div>
+		    </div><div id="content" style="display: none">
+		    <img src="images/smacna.jpeg" alt="" id="logoId"/>
+<table id="table-id">
+	<tr>
+		<td>Total Design Area (ft^2)</td>
+		<td>{{totalDesignArea}}</td>
+	</tr>
+	<tr>
+		<td>Number of Downspouts</td>
+		<td>{{noOfDownspoutForDoc}}</td>
+	</tr>
+	<tr>
+		<td>Mininum Area of Each Downspout (in)</td>
+		<td>{{minAreaOFEachDownspoutForDoc}}</td>
+	</tr>
+	<tr>
+		<td>Mininum Diameter of Downspout (in)</td>
+		<td>{{minDiameterOfDownspoutForDoc}}</td>
+	</tr>
+	<tr>
+		<td>Type of Downspout</td>
+		<td>{{typeOfDownspout}}</td>
+	</tr>
+</table>
+
+<div id="break"><br></br><br></br></div>
+<table id="table-id-one" border="0" bgcolor="white">
+<tr>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<table id="table-id-two">
+	<tr>
+		<td>Number of Gutters</td>
+		<td>{{noOfGuttersForDoc}}</td>
+	</tr>
+	<tr>
+		<td>Gutter Section Length (ft)</td>
+		<td>{{maxGutterSectionForDoc}}</td>
+	</tr>
+	<tr>
+		<td>Mininum Gutter Width (in)</td>
+		<td>{{minimumGutterWidthForDoc}}</td>
+	</tr>
+	<tr>
+		<td>Mininum Gutter Depth (in)</td>
+		<td>{{minimumGutterDepthForDoc}}</td>
+	</tr>
+	<tr>
+		<td>Mininum Gutter Width (Half Round) (in)</td>
+		<td>{{minimumGutterWidthHalfRoundForDoc}}</td>
+	</tr>
+</table>
+		    
+		    
+</div>
+<div id="editor"></div>
+                           <span><input type="button" title="Generate PDF"
+		value="Generate PDF" class="btn"
+		onclick="generatePDF();"/></span> 
+		
+		
+		
+			<!-- Next Button End -->
+			
+			<!-- Shape Form Starts here -->
+	
+		</div>
+	</div>
+	
+	
+	<!-- Content Body End -->
+	
+<!-- <script src="js/userinfo.js">
+</script> -->
+
+
+</body>
+</html>

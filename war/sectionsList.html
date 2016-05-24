@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gutter Downspout App</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/dd.css" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<!-- <link href="css/android.css" rel="stylesheet" type="text/css"  media="only screen and (min-width: 0px) and (max-width: 240px)"/> -->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(
+hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--[SELECT JS]-->
+<link rel="stylesheet" href="css/sparkbox-select.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.sparkbox-select.js"></script>
+<script src="js/script.js"></script>
+
+
+<script type="text/javascript">
+    
+   
+    </script>
+</head>
+
+<body>
+	<!-- Header Start -->
+	<div id="header">
+		<!-- Logo Start -->
+		<div id="logo">
+			<h1>
+				<a href="index.html"> <img src="images/logo.png" alt="HOME" />
+				</a>
+			</h1>
+		</div>
+		<!-- Logo End -->
+		<!-- Navigation Start -->
+		<div id="nav">
+			<ul>
+				<li><a class="first current" href="index.html">Home</a></li>
+				<li><a href="aboutUs">About Us</a></li>
+				<li class="last"><a href="contactUs" class="last">Contact Us</a></li>
+			</ul>
+		</div>
+		<!-- Navigation End -->
+		<div class="clr"></div>
+	</div>
+	<!-- Header End -->
+	<!-- Content Body Start -->
+	<div id="content-body">
+		<div class="content-container">
+			<h2>Sections List</h2>
+			<p><font color="white">Project Info:</font></p>
+			<p><font color="white">State/City: {{stateName}}</font></p>
+			<p><font color="white">Rain Intensity (in/hr)</font></p>
+			
+			<form method="post" action="${action}" commandName="contact"
+				onsubmit="validate()">
+				<div class="select selectMedium">
+				 <select onChange="getCity(this.value);" tabindex="-1" id="stateList">
+					<option value="0" label="Select the state" selected>Select the state</option>
+				</select>
+				</div>
+				<div class="select selectMedium">
+				<select tabindex="-1" id="cityList">
+					<option value="0" label="Select the city" selected>Select the city</option>
+				</select>
+				</div>
+				<div class="select selectMedium">
+				<select  onchange="getIntensity(this.value);" tabindex="-1" id="stormYearList">
+					<option value="0" label="Storm Year" selected>Storm Year</option>
+					<option value="10">10 years</option>
+					<option value="100">100 years</option>
+				</select>
+				</div>
+				<input type="text" id="rainIntensity" name="rainIntensity" placeholder="Rain Intensity (in/hr)"/>
+				<!-- Next Button Start -->
+				</br>
+				<!-- <div class="next-btn">
+					<a href="#" class="next"
+						onclick="validate()" >Next</a>
+				</div> -->
+				
+				<div>
+				<!--  <div class="pre-btn">
+					<a href="#" class="previous"
+						onclick="validate()" >Previous</a>
+				</div> -->
+        
+      <div class="next-btn">
+					<a href="#" class="next"
+						onclick="validate()" >Next</a>
+				</div>
+      
+</div>
+			</form>
+			
+			
+			<!-- Next Button End -->
+			
+			<!-- Shape Form Starts here -->
+	
+		</div>
+	</div>
+	
+	
+	<!-- Content Body End -->
+	
+<!-- <script src="js/userinfo.js">
+</script> -->
+
+
+</body>
+</html>

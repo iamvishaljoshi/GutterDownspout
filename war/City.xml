@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rain-intensity>
+	<state category="Alabama">
+		<city>Birmingham</city>
+		<city>Mobile</city>
+	</state>
+	<state category="Alaska">
+		<city>Fairbanks</city>
+		<city>Juneau</city>
+	</state>
+	<state category="Arizona">
+		<city>Phoenix</city>
+		<city>Tucson</city>
+	</state>
+	<state category="Arkansas">
+		<city>Bentonville</city>
+		<city>Little Rock</city>
+	</state>
+	<state category="California">
+		<city>Los Angeles</city>
+		<city>Sacramento</city>
+		<city>San Francisco</city>
+		<city>San Diego</city>
+	</state>
+	
+	<state category="Colorado">
+		<city>Denver</city>
+		<city>Boulder</city>
+	</state>
+	<state category="Connecticut">
+		<city>Hartford</city>
+	</state>
+	
+	<state category="District of Columbia">
+		<city>District of Columbia</city>
+	</state>
+	<state category="Florida">
+		<city>Jacksonville</city>
+		<city>Miami</city>
+		<city>Tampa</city>
+	</state>
+	<state category="Georgia">
+		<city>Atlanta</city>
+	</state>
+	<state category="Hawaii">
+		<city>Honolulu</city>
+		<city>Kahului</city>
+		<city>Hilo</city>
+		<city>Lihue</city>
+	</state>
+	<state category="Idaho">
+		<city>Boise</city>
+	</state>
+	<state category="Illinois">
+		<city>Chicago</city>
+	</state>
+	<state category="Indiana">
+		<city>Indianapolis</city>
+	</state>
+	<state category="Iowa">
+		<city>Des Moines</city>
+	</state>
+	<state category="Kansas">
+		<city>Wichita</city>
+	</state>
+	<state category="Kentucky">
+		<city>Louisville</city>
+	</state>
+	<state category="Louisiana">
+		<city>New Orleans</city>
+	</state>
+	<state category="Maine">
+		<city>Portland</city>
+	</state>
+	<state category="Maryland">
+		<city>Baltimore</city>
+	</state>
+	<state category="Massachusetts">
+		<city>Boston</city>
+	</state>
+	<state category="Michigan">
+		<city>Detroit</city>
+	</state>
+	<state category="Minnesota">
+		<city>Minneapolis</city>
+	</state>
+	<state category="Missouri">
+		<city>Kansas City</city>
+		<city>Saint Louis</city>
+	</state>
+	<state category="Montana">
+		<city>Helena</city>
+		<city>Missoula</city>
+	</state>
+	<state category="Nebraska">
+		<city>Omaha</city>
+	</state>
+	<state category="Nevada">
+		<city>Reno</city>
+		<city>Las Vegas</city>
+	</state>
+	<state category="New Jersey">
+		<city>Trenton</city>
+	</state>
+	<state category="New Mexico">
+		<city>Albuquerque</city>
+		<city>Santa Fe</city>
+	</state>
+	<state category="New York">
+		<city>Albany</city>
+		<city>Buffalo</city>
+		<city>New York City</city>
+	</state>
+	<state category="North Carolina">
+		<city>Raleigh</city>
+	</state>
+	<state category="North Dakota">
+		<city>Bismark</city>
+	</state>
+	<state category="Ohio">
+		<city>Cincinnati</city>
+		<city>Cleveland</city>
+	</state>
+	<state category="Oklahoma">
+		<city>Oklahoma City</city>
+	</state>
+	<state category="Oregon">
+		<city>Baker</city>
+		<city>Portland</city>
+	</state>
+	<state category="Pennsylvania">
+		<city>Philadelphia</city>
+		<city>Pittsburgh</city>
+	</state>
+	<state category="Rhode Island">
+		<city>Providence</city>
+	</state>
+	<state category="South Carolina">
+		<city>Charleston</city>
+	</state>
+	<state category="Tennessee">
+		<city>Memphis</city>
+		<city>Knoxville</city>
+	</state>
+	<state category="Texas">
+		<city>Fort Worth</city>
+		<city>Dallas</city>
+		<city>Houston</city>
+		<city>San Antonio</city>
+	</state>
+	<state category="Utah">
+		<city>Provo</city>
+		<city>Salt Lake City</city>
+	</state>
+	<state category="Virginia">
+		<city>Norfolk</city>
+	</state>
+	<state category="Washington">
+		<city>Seattle</city>
+		<city>Spokane</city>
+	</state>
+	<state category="West Virginia">
+		<city>Parkersburg</city>
+	</state>
+	<state category="Wisconsin">
+		<city>Madison</city>
+		<city>Milwaukee</city>
+	</state>
+	<state category="Wyoming">
+		<city>Cheyenne</city>
+	</state>
+</rain-intensity>

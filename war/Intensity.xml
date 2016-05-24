@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rain-intensity>
+	<city category="Alabama-Birmingham">
+		<intensity category="10">7.5</intensity>
+		<intensity category="100">10.1</intensity>
+	</city>
+	<city category="Alabama-Mobile">
+		<intensity category="10">8.2</intensity>
+		<intensity category="100">10.8</intensity>
+	</city>
+	<city category="Alaska-Fairbanks">
+		<intensity category="10">2.1</intensity>
+		<intensity category="100">3.8</intensity>
+	</city>
+	<city category="Alaska-Juneau">
+		<intensity category="10">1.7</intensity>
+		<intensity category="100">2.3</intensity>
+	</city>
+
+	<city category="Arizona-Phoenix">
+		<intensity category="10">5.6</intensity>
+		<intensity category="100">8.8</intensity>
+	</city>
+	
+	<city category="Arizona-Tucson">
+		<intensity category="10">6.1</intensity>
+		<intensity category="100">9.1</intensity>
+	</city>
+
+	<city category="Arkansas-Bentonville">
+		<intensity category="10">7.4</intensity>
+		<intensity category="100">10.2</intensity>
+	</city>
+	<city category="Arkansas-Little Rock">
+		<intensity category="10">7.4</intensity>
+		<intensity category="100">10.0</intensity>
+	</city>
+
+	<city category="California-Los Angeles">
+		<intensity category="10">4.9</intensity>
+		<intensity category="100">6.7</intensity>
+	</city>
+	<city category="California-Sacramento">
+		<intensity category="10">2.5</intensity>
+		<intensity category="100">3.9</intensity>
+	</city>
+	<city category="California-San Francisco">
+		<intensity category="10">2.7</intensity>
+		<intensity category="100">3.7</intensity>
+	</city>
+	<city category="California-San Diego">
+		<intensity category="10">2.2</intensity>
+		<intensity category="100">3.1</intensity>
+	</city>
+	<city category="Colorado-Denver">
+		<intensity category="10">5.7</intensity>
+		<intensity category="100">9.1</intensity>
+	</city>
+	<city category="Colorado-Boulder">
+		<intensity category="10">6.4</intensity>
+		<intensity category="100">9.4</intensity>
+	</city>
+
+	<city category="Connecticut-Hartford">
+		<intensity category="10">6.2</intensity>
+		<intensity category="100">8.7</intensity>
+	</city>
+	
+	<city category="District of Columbia-District of Columbia">
+		<intensity category="10">7.1</intensity>
+		<intensity category="100">9.7</intensity>
+	</city>
+
+	<city category="Florida-Jacksonville">
+		<intensity category="10">7.9</intensity>
+		<intensity category="100">10.1</intensity>
+	</city>
+	<city category="Florida-Miami">
+		<intensity category="10">7.7</intensity>
+		<intensity category="100">9.8</intensity>
+	</city>
+	<city category="Florida-Tampa">
+		<intensity category="10">8.3</intensity>
+		<intensity category="100">10.8</intensity>
+	</city>
+
+	<city category="Georgia-Atlanta">
+		<intensity category="10">7.3</intensity>
+		<intensity category="100">9.9</intensity>
+	</city>
+
+	<city category="Hawaii-Honolulu">
+		<intensity category="10">8.7</intensity>
+		<intensity category="100">12.0</intensity>
+	</city>
+	<city category="Hawaii-Kahului">
+		<intensity category="10">7.0</intensity>
+		<intensity category="100">12.0</intensity>
+	</city>
+	<city category="Hawaii-Hilo">
+		<intensity category="10">17.4</intensity>
+		<intensity category="100">19.2</intensity>
+	</city>
+	<city category="Hawaii-Lihue">
+		<intensity category="10">10.4</intensity>
+		<intensity category="100">14.4</intensity>
+	</city>
+
+	<city category="Idaho-Boise">
+		<intensity category="10">1.8</intensity>
+		<intensity category="100">3.3</intensity>
+	</city>
+
+	<city category="Illinois-Chicago">
+	<intensity category="10">6.8</intensity>
+		<intensity category="100">9.3</intensity>
+	</city>
+
+	<city category="Indiana-Indianapolis">
+	<intensity category="10">6.8</intensity>
+		<intensity category="100">9.4</intensity>
+	</city>
+
+	<city category="Iowa-Des Moines">
+	<intensity category="10">7.3</intensity>
+		<intensity category="100">10.3</intensity>
+	</city>
+
+	<city category="Kansas-Wichita">
+	<intensity category="10">7.5</intensity>
+		<intensity category="100">10.5</intensity>
+	</city>
+
+	<city category="Kentucky-Louisville">
+	<intensity category="10">6.9</intensity>
+		<intensity category="100">9.4</intensity>
+	</city>
+
+	<city category="Louisiana-New Orleans">
+		<intensity category="10">8.3</intensity>
+		<intensity category="100">10.9</intensity>
+	</city>
+
+	<city category="Maine-Portland">
+		<intensity category="10">5.4</intensity>
+		<intensity category="100">7.6</intensity>
+	</city>
+
+	<city category="Maryland-Baltimore">
+		<intensity category="10">7.1</intensity>
+		<intensity category="100">9.7</intensity>
+	</city>
+
+	<city category="Massachusetts-Boston">
+		<intensity category="10">5.3</intensity>
+		<intensity category="100">7.2</intensity>
+	</city>
+
+	<city category="Michigan-Detroit">
+		<intensity category="10">6.4</intensity>
+		<intensity category="100">8.9</intensity>
+	</city>
+
+	<city category="Minnesota-Minneapolis">
+		<intensity category="10">7.0</intensity>
+		<intensity category="100">10.0</intensity>
+	</city>
+
+	<city category="Missouri-Kansas City">
+		<intensity category="10">7.4</intensity>
+		<intensity category="100">10.4</intensity>
+	</city>
+	<city category="Missouri-Saint Louis">
+		<intensity category="10">7.1</intensity>
+		<intensity category="100">9.9</intensity>
+	</city>
+
+	<city category="Montana-Helena">
+		<intensity category="10">1.8</intensity>
+		<intensity category="100">3.1</intensity>
+	</city>
+	<city category="Montana-Missoula">
+		<intensity category="10">1.8</intensity>
+		<intensity category="100">2.4</intensity>
+	</city>
+
+	<city category="Nebraska-Omaha">
+		<intensity category="10">7.4</intensity>
+		<intensity category="100">10.5</intensity>
+	</city>
+
+	<city category="Nevada-Reno">
+		<intensity category="10">2.3</intensity>
+		<intensity category="100">4.5</intensity>
+	</city>
+	<city category="Nevada-Las Vegas">
+		<intensity category="10">2.1</intensity>
+		<intensity category="100">5.2</intensity>
+	</city>
+
+	<city category="New Jersey-Trenton">
+		<intensity category="10">6.7</intensity>
+		<intensity category="100">9.3</intensity>
+	</city>
+
+	<city category="New Mexico-Albuquerque">
+		<intensity category="10">4.0</intensity>
+		<intensity category="100">6.7</intensity>
+	</city>
+	<city category="New Mexico-Santa Fe">
+		<intensity category="10">4.5</intensity>
+		<intensity category="100">6.4</intensity>
+	</city>
+
+	<city category="New York-Albany">
+		<intensity category="10">6.5</intensity>
+		<intensity category="100">9.1</intensity>
+	</city>
+	<city category="New York-Buffalo">
+		<intensity category="10">6.0</intensity>
+		<intensity category="100">8.4</intensity>
+	</city>
+	<city category="New York-New York City">
+		<intensity category="10">6.7</intensity>
+		<intensity category="100">9.2</intensity>
+	</city>
+
+	<city category="North Carolina-Raleigh">
+		<intensity category="10">7.3</intensity>
+		<intensity category="100">9.8</intensity>
+	</city>
+
+	<city category="North Dakota-Bismark">
+		<intensity category="10">6.6</intensity>
+		<intensity category="100">9.8</intensity>		
+	</city>
+
+	<city category="Ohio-Cincinnati">
+		<intensity category="10">6.8</intensity>
+		<intensity category="100">9.3</intensity>		
+	</city>
+	<city category="Ohio-Cleveland">
+		<intensity category="10">6.3</intensity>
+		<intensity category="100">8.8</intensity>
+	</city>
+
+	<city category="Oklahoma-Oklahoma City">
+		<intensity category="10">7.6</intensity>
+		<intensity category="100">10.5</intensity>
+	</city>
+
+	<city category="Oregon-Baker">
+		<intensity category="10">2.2</intensity>
+		<intensity category="100">3.8</intensity>
+	</city>
+	
+	<city category="Oregon-Portland">
+		<intensity category="10">2.1</intensity>
+		<intensity category="100">3.0</intensity>
+	</city>
+
+	<city category="Pennsylvania-Philadelphia">
+		<intensity category="10">6.8</intensity>
+		<intensity category="100">9.4</intensity>
+	</city>
+	
+	<city category="Pennsylvania-Pittsburgh">
+		<intensity category="10">6.4</intensity>
+		<intensity category="100">8.8</intensity>
+	</city>
+
+	<city category="Rhode Island-Providence">
+		<intensity category="10">5.6</intensity>
+		<intensity category="100">7.8</intensity>
+	</city>
+
+	<city category="South Carolina-Charleston">
+		<intensity category="10">7.2</intensity>
+		<intensity category="100">9.4</intensity>
+	</city>
+
+	<city category="Tennessee-Memphis">
+		<intensity category="10">7.4</intensity>
+		<intensity category="100">10.0</intensity>
+	</city>
+	<city category="Tennessee-Knoxville">
+		<intensity category="10">6.7</intensity>
+		<intensity category="100">9.0</intensity>
+	</city>
+
+	<city category="Texas-Fort Worth">
+		<intensity category="10">7.6</intensity>
+		<intensity category="100">10.5</intensity>
+	</city>
+	<city category="Texas-Dallas">
+		<intensity category="10">7.6</intensity>
+		<intensity category="100">10.5</intensity>
+	</city>
+	<city category="Texas-Houston">
+		<intensity category="10">8.2</intensity>
+		<intensity category="100">10.8</intensity>	
+	</city>
+	<city category="Texas-San Antonio">
+		<intensity category="10">7.6</intensity>
+		<intensity category="100">10.5</intensity>		
+	</city>
+
+	<city category="Utah-Provo">
+		<intensity category="10">3.0</intensity>
+		<intensity category="100">5.2</intensity>	
+	</city>
+	<city category="Utah-Salt Lake City">
+		<intensity category="10">2.8</intensity>
+		<intensity category="100">4.3</intensity>	
+	</city>
+
+	<city category="Virginia-Norfolk">
+		<intensity category="10">7.1</intensity>
+		<intensity category="100">9.5</intensity>	
+	</city>
+
+	<city category="Washington-Seattle">
+		<intensity category="10">2.1</intensity>
+		<intensity category="100">3.3</intensity>	
+	</city>
+	<city category="Washington-Spokane">
+		<intensity category="10">2.1</intensity>
+		<intensity category="100">3.5</intensity>	
+	</city>
+
+	<city category="West Virginia-Parkersburg">
+		<intensity category="10">6.6</intensity>
+		<intensity category="100">9.1</intensity>
+	</city>
+
+	<city category="Wisconsin-Madison">
+		<intensity category="10">6.8</intensity>
+		<intensity category="100">9.5</intensity>	
+	</city>
+	<city category="Wisconsin-Milwaukee">
+		<intensity category="10">6.6</intensity>
+		<intensity category="100">9.1</intensity>	
+	</city>
+
+	<city category="Wyoming-Cheyenne">
+		<intensity category="10">5.7</intensity>
+		<intensity category="100">9.9</intensity>	
+	</city>
+
+</rain-intensity>
